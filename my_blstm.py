@@ -110,7 +110,7 @@ def rudimentary_test():
 
     params1 = eps1*(2*random(n_params,)-1.)
 
-    blstm = BLSTMLayer(n_in, n_hidden, n_in, params1, eps2)
+    blstm = BLSTMLayer(n_in, n_hidden, n_out, params1, eps2)
 
     y1 = blstm.gen_sequence(v)
 
