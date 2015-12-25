@@ -26,28 +26,6 @@ def activation(z, method="tanh"):
         return 1./(1.+np.exp(-z))
 
 
-
-def gen_bag_hashtable():
-    N = len(printable)
-    table = {}
-    for k in range(N):
-        table[printable[k]] = k
-    return table
-
-def make_wordvector(s, table):
-    N = len(printable)
-    L = len(s)
-    a = np.zeros((N,L))
-    for k in range(L):
-        a[ table[ s[k] ], k ] = 1
-    return a
-
-def make_string(x):
-    s = []
-    for k in range(x.shape[1]):
-        s.append(printable[np.argmax(x[:,k])])
-    return ''.join(s)
-
 class BLSTMLayer:
     def __init__(self, n_in, n_hidden, n_out, params, eps):
         """
