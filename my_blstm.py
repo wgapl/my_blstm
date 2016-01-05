@@ -226,7 +226,10 @@ class BLSTMLayer:
             # BACKWARD: calculate backward hidden state values
             H[n_hidden:,k] = lstmBack.step(X[:,T-1-k])
 
-        return activation(np.dot(self.W, H), method="linear")
+        return activation(np.dot(self.W, 
+                                 H) + \
+                          np.tile(self.bias,(T,1)).T, 
+                          method="linear")
 
 def rudimentary_test():
     s = """0 a is the quick fox who jumped over the lazy brown dog's new sentence."""
